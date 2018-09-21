@@ -27,17 +27,17 @@ namespace learntest
             button.Click();
             browser.Close();
         }
-        //[Test]
-        //public void all_in_deti()
-        //{
-        //    IWebDriver browser = new ChromeDriver();
-        //    browser.Navigate().GoToUrl("https://www.olx.ua");
-        //    IWebElement deti = browser.FindElement(By.CssSelector("//*[@id=\"searchmain - container\"]/div/div/div[1]/div[1]/div/a"));
-        //    deti.Click();
-        //    browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-        //    IWebElement button = browser.FindElement(By.CssSelector("//*[@id=\"searchmain - container\"]/div/div/div[1]/div[1]/div/a"));
-        //    button.Click();
-        //    browser.Close();
-        //}
+        [Test]
+        public void all_in_deti()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement deti = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(1) > div:nth-child(1) > div > a"));
+            deti.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement button = browser.FindElement(By.CssSelector("#bottom36 > div > a"));
+            button.Click();
+            browser.Close();
+        }
     }
 }
