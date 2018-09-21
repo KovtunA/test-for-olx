@@ -14,8 +14,9 @@ namespace learntest
             browser.Navigate().GoToUrl("https://www.olx.ua/rabota/stroitelstvo/dnepr/");
             IWebElement button = browser.FindElement(By.CssSelector("#headerLogo"));
             button.Click();
+            IWebElement button1 = browser.FindElement(By.CssSelector("#submit-searchmain"));
+            button1.Click();
             browser.Close();
-
         }
         [Test]
         public void submit_search()
@@ -26,14 +27,17 @@ namespace learntest
             button.Click();
             browser.Close();
         }
-        [Test]
-        public void all_in_deti()
-        {
-            IWebDriver browser = new ChromeDriver();
-            browser.Navigate().GoToUrl("https://www.olx.ua");
-            IWebElement button = browser.FindElement(By.CssSelector("#bottom36 > div"));
-            button.Click();
-            browser.Close();
-        }
+        //[Test]
+        //public void all_in_deti()
+        //{
+        //    IWebDriver browser = new ChromeDriver();
+        //    browser.Navigate().GoToUrl("https://www.olx.ua");
+        //    IWebElement deti = browser.FindElement(By.CssSelector("//*[@id=\"searchmain - container\"]/div/div/div[1]/div[1]/div/a"));
+        //    deti.Click();
+        //    browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        //    IWebElement button = browser.FindElement(By.CssSelector("//*[@id=\"searchmain - container\"]/div/div/div[1]/div[1]/div/a"));
+        //    button.Click();
+        //    browser.Close();
+        //}
     }
 }
