@@ -37,7 +37,57 @@ namespace learntest
             browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             IWebElement button = browser.FindElement(By.CssSelector("#bottom36 > div > a"));
             button.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             browser.Close();
+
+        }
+
+        [Test]
+        public void nedviz()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement nedvizh = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(1) > div:nth-child(2) > div"));
+            nedvizh.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement button = browser.FindElement(By.CssSelector("#bottom1 > div > a"));
+            button.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            browser.Close();
+
+        }
+
+        [Test]
+        public void cars()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement car = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(1) > div:nth-child(3) > div > a"));
+            car.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement button = browser.FindElement(By.CssSelector("#bottom1532 > div > a"));
+            button.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            browser.Close();
+
+        }
+
+        [Test]
+        public void zapchast()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement zapas = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(1) > div:nth-child(4)"));
+            zapas.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement button = browser.FindElement(By.CssSelector("#bottom3 > div > a"));
+            button.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            browser.FindElement(By.CssSelector("#search-text"));
+            IWebElement TextBox = browser.FindElement(By.CssSelector("#search-text"));
+            TextBox.Clear();
+            TextBox.SendKeys("password");
+
         }
     }
 }
