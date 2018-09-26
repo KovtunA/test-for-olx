@@ -7,11 +7,16 @@ namespace learntest
     [TestFixture]
     public class Class1
     {
+        static void pageWithgoods(ChromeDriver browser)
+        {
+            browser.Navigate().GoToUrl("https://www.olx.ua/obyavlenie/prodam-shikarnogo-persikovogo-myagkogo-zaychenka-1-5-m-vysota-ID8gdJF.html#f5e5cfebb7");
+        }
+
         [Test]
         public void go_to_home_page()
         {
-            IWebDriver browser = new ChromeDriver();
-            browser.Navigate().GoToUrl("https://www.olx.ua/rabota/stroitelstvo/dnepr/");
+            ChromeDriver browser = new ChromeDriver();
+            pageWithgoods(browser);
             IWebElement button = browser.FindElement(By.CssSelector("#headerLogo"));
             button.Click();
             IWebElement button1 = browser.FindElement(By.CssSelector("#submit-searchmain"));
@@ -94,16 +99,6 @@ namespace learntest
         }
 
         [Test]
-        public void nobutton()
-        {
-            IWebDriver browser = new ChromeDriver();
-            browser.Navigate().GoToUrl("https://www.olx.ua/nedvizhimost/dnepr/");
-            IWebElement notbut = browser.FindElement(By.CssSelector("#param_state > div > a > span.header.block"));
-            Assert.False(notbut.Displayed);
-            browser.Close();
-        }
-
-        [Test]
         public void choicephoto()
         {
             IWebDriver browser = new ChromeDriver();
@@ -114,21 +109,6 @@ namespace learntest
             IWebElement button = browser.FindElement(By.CssSelector("#bigImage > div.lshownext.abs.cpointer.bigImageNext > a > span"));
             button.Click();
             browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(1);
-            button.Click();
-            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(1);
-            button.Click();
-            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(1);
-            browser.Close();
-        }
-
-        [Test]
-        public void contact()
-        {
-            IWebDriver browser = new ChromeDriver();
-            browser.Navigate().GoToUrl("https://www.olx.ua/obyavlenie/prodam-shikarnogo-persikovogo-myagkogo-zaychenka-1-5-m-vysota-ID8gdJF.html#f5e5cfebb7");
-            IWebElement cont = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(2) > div > span"));
-            cont.Click();
-            Assert.True(cont.Displayed);
             browser.Close();
         }
 
@@ -136,11 +116,45 @@ namespace learntest
         public void emailme()
         {
             IWebDriver browser = new ChromeDriver();
-            browser.Navigate().GoToUrl("https://www.olx.ua/obyavlenie/prodam-shikarnogo-persikovogo-myagkogo-zaychenka-1-5-m-vysota-ID8gdJF.html#f5e5cfebb7");
+            browser.Navigate().GoToUrl("https://www.olx.ua/obyavlenie/kpeslo-grusha-pufik-meshok-beskarkasnoe-myagkoe-l-IDBKMMY.html#92d5de5efe");
             IWebElement mail = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(1) > a > span"));
             mail.Click();
             Assert.True(mail.Displayed);
             browser.Close();
+        }
+
+
+        [Test]
+        public void contact()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua/obyavlenie/kpeslo-grusha-pufik-meshok-beskarkasnoe-myagkoe-l-IDBKMMY.html#92d5de5efe");
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            IWebElement cont = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(2) > div > span"));
+            cont.Click();
+            Assert.True(cont.Displayed);
+            browser.Close();
+        }
+
+        [Test]
+        public void nobutton()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua/nedvizhimost/dnepr/");
+            IWebElement notbut = browser.FindElement(By.CssSelector("#param_size > div > div.filter-item.filter-item-from.rel.numeric-item > a"));
+            Assert.False(notbut.Displayed);
+            browser.Close();
+        }
+
+        [Test]
+        public void otherads()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua/obyavlenie/kpeslo-grusha-pufik-meshok-beskarkasnoe-myagkoe-l-IDBKMMY.html#92d5de5efe");
+            IWebElement otherad = browser.FindElement(By.XPath("//*[@id=\"offeractions\"]/div[4]/div[2]/a"));
+            otherad.Click();
+            browser.Close();
+
         }
     }
 }
