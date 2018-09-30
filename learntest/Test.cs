@@ -105,22 +105,6 @@ namespace learntest
         {
             var nameOfCategoria = "#searchmain-container > div > div > div:nth-child(1) > div:nth-child(4) > div > a > span:nth-child(1)";
             CategoriesOfMain(nameOfCategoria, "#bottom3 > div > a > strong");
-            //IWebDriver browser = new ChromeDriver();
-            //browser.Navigate().GoToUrl("https://www.olx.ua");
-            //IWebElement zapas = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(1) > div:nth-child(4)"));
-            //zapas.Click();
-            //browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            //IWebElement button = browser.FindElement(By.CssSelector("#bottom3 > div > a"));
-            //button.Click();
-            //browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            //browser.FindElement(By.CssSelector("#search-text"));
-            //IWebElement TextBox = browser.FindElement(By.CssSelector("#search-text"));
-            //TextBox.Clear();
-            //TextBox.SendKeys("резина");
-            //IWebElement pop = browser.FindElement(By.CssSelector("#paramsListOpt > div > div.fblock.fleft.olx-delivery-filter.last.olx-delivery-filter.js-highlight-element.highlight-element-active > div.highlight-container > div.highlight-text > span"));
-            //pop.Click();
-            //IWebElement searchbutton = browser.FindElement(By.CssSelector("#search-submit"));
-            //searchbutton.Click();
         }
 
         [Test]
@@ -181,8 +165,42 @@ namespace learntest
         [Test]
         public void darom()
         {
-            var nameOfCategoria = "#searchmain-container > div > div > div:nth-child(11) > div:nth-child(4) > div > a > span:nth-child(1)";
-            CategoriesOfMain(nameOfCategoria, "");
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement categoria = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(11) > div:nth-child(4) > div > a > span:nth-child(1)"));
+            categoria.Click();
+            browser.Close();
+        }
+
+        [Test]
+        public void obmen()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement categoria = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(16) > div.li.fleft > div > a > span:nth-child(1)"));
+            categoria.Click();
+            browser.Close();
+        }
+
+        [Test]
+        public void searchInCategory()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl("https://www.olx.ua");
+            IWebElement zapas = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(1) > div:nth-child(4)"));
+            zapas.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement button = browser.FindElement(By.CssSelector("#bottom3 > div > a"));
+            button.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            browser.FindElement(By.CssSelector("#search-text"));
+            IWebElement TextBox = browser.FindElement(By.CssSelector("#search-text"));
+            TextBox.Clear();
+            TextBox.SendKeys("резина");
+            IWebElement pop = browser.FindElement(By.CssSelector("#paramsListOpt > div > div.fblock.fleft.olx-delivery-filter.last.olx-delivery-filter.js-highlight-element.highlight-element-active > div.highlight-container > div.highlight-text > span"));
+            pop.Click();
+            IWebElement searchbutton = browser.FindElement(By.CssSelector("#search-submit"));
+            searchbutton.Click();
         }
 
         [Test]
@@ -250,6 +268,30 @@ namespace learntest
             otherad.Click();
             browser.Close();
 
+        }
+
+        [Test]
+        public void addToBasket()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl(GoodsUrl);
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            IWebElement cont = browser.FindElement(By.CssSelector("#offerdescription > div:nth-child(1) > div > a"));
+            cont.Click();
+
+           //browser.Close();
+        }
+
+        [Test]
+        public void addToBasket1()
+        {
+            IWebDriver browser = new ChromeDriver();
+            browser.Navigate().GoToUrl(GoodsUrl);
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            IWebElement cont = browser.FindElement(By.CssSelector("#offerdescription > div:nth-child(1) > div > a"));
+            cont.Click();
+
+            //browser.Close();
         }
     }
 }
