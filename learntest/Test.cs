@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using System;
 namespace learntest
 {
@@ -169,6 +170,7 @@ namespace learntest
             browser.Navigate().GoToUrl("https://www.olx.ua");
             IWebElement categoria = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(11) > div:nth-child(4) > div > a > span:nth-child(1)"));
             categoria.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             browser.Close();
         }
 
@@ -179,6 +181,7 @@ namespace learntest
             browser.Navigate().GoToUrl("https://www.olx.ua");
             IWebElement categoria = browser.FindElement(By.CssSelector("#searchmain-container > div > div > div:nth-child(16) > div.li.fleft > div > a > span:nth-child(1)"));
             categoria.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             browser.Close();
         }
 
@@ -222,11 +225,12 @@ namespace learntest
         {
             IWebDriver browser = new ChromeDriver();
             browser.Navigate().GoToUrl(GoodsUrl);
-            //ChromeDriver browser = new ChromeDriver();
-            //pageWithgoods(browser); 
+            var element = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(1) > a > span"));
+            Actions actions = new Actions(browser);
+            actions.MoveToElement(element);
+            actions.Perform();
             IWebElement mail = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(1) > a > span"));
             mail.Click();
-            Assert.True(mail.Displayed);
             browser.Close();
         }
 
@@ -236,24 +240,14 @@ namespace learntest
         {
             IWebDriver browser = new ChromeDriver();
             browser.Navigate().GoToUrl(GoodsUrl);
-            //ChromeDriver browser = new ChromeDriver();
-            //pageWithgoods(browser);
+            var element = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(2) > div"));
+            Actions actions = new Actions(browser);
+            actions.MoveToElement(element);
+            actions.Perform();
             browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            IWebElement cont = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(2) > div > span"));
-            cont.Click();
-            Assert.True(cont.Displayed);
-            browser.Close();
-        }
-
-        [Test]
-        public void nobutton()
-        {
-            IWebDriver browser = new ChromeDriver();
-            browser.Navigate().GoToUrl("https://www.olx.ua/nedvizhimost/dnepr/");
-            //ChromeDriver browser = new ChromeDriver();
-            //pageWithgoods(browser);
-            IWebElement notbut = browser.FindElement(By.CssSelector("#param_size > div > div.filter-item.filter-item-from.rel.numeric-item > a"));
-            Assert.False(notbut.Displayed);
+            IWebElement contac = browser.FindElement(By.CssSelector("#contact_methods > li:nth-child(2) > div"));
+            contac.Click();
+            browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             browser.Close();
         }
 
@@ -262,8 +256,6 @@ namespace learntest
         {
             IWebDriver browser = new ChromeDriver();
             browser.Navigate().GoToUrl(GoodsUrl);
-            //ChromeDriver browser = new ChromeDriver();
-            //pageWithgoods(browser);
             IWebElement otherad = browser.FindElement(By.XPath("//*[@id=\"offeractions\"]/div[4]/div[2]/a"));
             otherad.Click();
             browser.Close();
@@ -276,22 +268,24 @@ namespace learntest
             IWebDriver browser = new ChromeDriver();
             browser.Navigate().GoToUrl(GoodsUrl);
             browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            IWebElement cont = browser.FindElement(By.CssSelector("#offerdescription > div:nth-child(1) > div > a"));
-            cont.Click();
-
-           //browser.Close();
+            var element = browser.FindElement(By.CssSelector("#offerdescription > div:nth-child(1) > div > a"));
+            Actions actions = new Actions(browser);
+            actions.MoveToElement(element);
+            actions.Perform();
+            IWebElement star = browser.FindElement(By.CssSelector("#offerdescription > div:nth-child(1) > div > a"));
+            star.Click();
+            browser.Close();
         }
 
         [Test]
-        public void addToBasket1()
+        public void logo()
         {
             IWebDriver browser = new ChromeDriver();
             browser.Navigate().GoToUrl(GoodsUrl);
             browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            IWebElement cont = browser.FindElement(By.CssSelector("#offerdescription > div:nth-child(1) > div > a"));
+            IWebElement cont = browser.FindElement(By.Id("headerLogo"));
             cont.Click();
-
-            //browser.Close();
+            browser.Close();
         }
     }
 }
